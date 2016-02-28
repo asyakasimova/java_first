@@ -21,11 +21,11 @@ public class groupCreation {
     driver = new FirefoxDriver();
     baseUrl = "http://localhost/addressbook";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.get(baseUrl);
+    login();
   }
 
-  @Test
-  public void testGroupCreation() throws Exception {
-    driver.get(baseUrl);
+  private void login() {
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
     driver.findElement(By.name("user")).sendKeys("admin");
@@ -33,15 +33,35 @@ public class groupCreation {
     driver.findElement(By.name("pass")).clear();
     driver.findElement(By.name("pass")).sendKeys("secret");
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    driver.findElement(By.linkText("groups")).click();
-    driver.findElement(By.name("new")).click();
+  }
+
+  @Test
+  public void testGroupCreation() throws Exception {
+    gotoGroupsPage();
+    initGroupCreation();
+    fillGroupForm();
+    submitGroupCreation();
+    gotoGroupsPage();
+  }
+
+  private void submitGroupCreation() {
+    driver.findElement(By.name("submit")).click();
+  }
+
+  private void fillGroupForm() {
     driver.findElement(By.name("group_name")).clear();
     driver.findElement(By.name("group_name")).sendKeys("1");
     driver.findElement(By.name("group_header")).clear();
     driver.findElement(By.name("group_header")).sendKeys("2");
     driver.findElement(By.name("group_footer")).clear();
     driver.findElement(By.name("group_footer")).sendKeys("3");
-    driver.findElement(By.name("submit")).click();
+  }
+
+  private void initGroupCreation() {
+    driver.findElement(By.name("new")).click();
+  }
+
+  private void gotoGroupsPage() {
     driver.findElement(By.linkText("groups")).click();
   }
 
