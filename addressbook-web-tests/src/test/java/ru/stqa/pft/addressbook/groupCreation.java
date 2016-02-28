@@ -22,16 +22,16 @@ public class groupCreation {
     baseUrl = "http://localhost/addressbook";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     driver.get(baseUrl);
-    login();
+    login("admin", "secret");
   }
 
-  private void login() {
+  private void login(String login, String passwd) {
     driver.findElement(By.name("user")).click();
     driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys("admin");
+    driver.findElement(By.name("user")).sendKeys(login);
     driver.findElement(By.name("pass")).click();
     driver.findElement(By.name("pass")).clear();
-    driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.name("pass")).sendKeys(passwd);
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
   }
 
@@ -39,7 +39,7 @@ public class groupCreation {
   public void testGroupCreation() throws Exception {
     gotoGroupsPage();
     initGroupCreation();
-    fillGroupForm();
+    fillGroupForm(new GroupData11("1", "2", "3"));
     submitGroupCreation();
     gotoGroupsPage();
   }
@@ -48,13 +48,13 @@ public class groupCreation {
     driver.findElement(By.name("submit")).click();
   }
 
-  private void fillGroupForm() {
+  private void fillGroupForm(GroupData11 groupData11) {
     driver.findElement(By.name("group_name")).clear();
-    driver.findElement(By.name("group_name")).sendKeys("1");
+    driver.findElement(By.name("group_name")).sendKeys(groupData11.getName1());
     driver.findElement(By.name("group_header")).clear();
-    driver.findElement(By.name("group_header")).sendKeys("2");
+    driver.findElement(By.name("group_header")).sendKeys(groupData11.getHeader1());
     driver.findElement(By.name("group_footer")).clear();
-    driver.findElement(By.name("group_footer")).sendKeys("3");
+    driver.findElement(By.name("group_footer")).sendKeys(groupData11.getFooter1());
   }
 
   private void initGroupCreation() {
