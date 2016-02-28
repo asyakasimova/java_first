@@ -19,28 +19,54 @@ public class ContactCreationTests {
   @BeforeMethod
   public void setUp() throws Exception {
     driver = new FirefoxDriver();
-    baseUrl = "http://localhost/";
+    baseUrl = "http://localhost/addressbook";
     driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+    driver.get(baseUrl);
+    login();
+  }
+
+  private void login() {
+    driver.findElement(By.name("user")).click();
+    driver.findElement(By.name("user")).clear();
+    driver.findElement(By.name("user")).sendKeys("admin");
+    driver.findElement(By.name("pass")).click();
+    driver.findElement(By.name("pass")).clear();
+    driver.findElement(By.name("pass")).sendKeys("secret");
+    driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
   }
 
   @Test
   public void testContactCreationTests() throws Exception {
-    driver.get(baseUrl + "/addressbook/");
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys("admin");
-    driver.findElement(By.name("user")).clear();
-    driver.findElement(By.name("user")).sendKeys("admin");
+    contactCreationPage();
+    fillingContactParameters(new ContactData("Asya", "Kasimova", "+7 495 111 11 11", "test address", "asya.kasimova@something.ru"));
+    submittingNewContact();
+    returnToHomePage();
+  }
+
+  private void returnToHomePage() {
+    driver.findElement(By.linkText("home")).click();
+  }
+
+  private void submittingNewContact() {
     driver.findElement(By.cssSelector("input[type=\"submit\"]")).click();
-    driver.findElement(By.linkText("add new")).click();
+  }
+
+  private void fillingContactParameters(ContactData contactData) {
     driver.findElement(By.name("firstname")).clear();
-    driver.findElement(By.name("firstname")).sendKeys("Asya");
+    driver.findElement(By.name("firstname")).sendKeys(contactData.getUsername());
     driver.findElement(By.name("lastname")).clear();
-    driver.findElement(By.name("lastname")).sendKeys("Kasimova");
+    driver.findElement(By.name("lastname")).sendKeys(contactData.getFamilyName());
     driver.findElement(By.name("home")).clear();
-    driver.findElement(By.name("home")).sendKeys("+7 495 111 11 11");
+    driver.findElement(By.name("home")).sendKeys(contactData.getPhoneNumber());
+    driver.findElement(By.name("home")).clear();
+    driver.findElement(By.name("home")).sendKeys(contactData.getAddress());
     driver.findElement(By.name("email")).clear();
-    driver.findElement(By.name("email")).sendKeys("asya.kasimova@something.ru");
+    driver.findElement(By.name("email")).sendKeys(contactData.getEmail());
     // ERROR: Caught exception [Error: Dom locators are not implemented yet!]
+  }
+
+  private void contactCreationPage() {
+    driver.findElement(By.linkText("add new")).click();
   }
 
   @AfterMethod

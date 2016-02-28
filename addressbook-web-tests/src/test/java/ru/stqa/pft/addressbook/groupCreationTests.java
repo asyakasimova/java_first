@@ -34,7 +34,7 @@ public class groupCreationTests {
     public void testGroupCreation() {
         gotoGroupPage();
         initGroupCreation();
-        fillGroupForm(new GroupData1(new GroupData("test1", "test2", "test3")));
+        fillGroupForm(new GroupData11("test1", "test2", "test3"));
         submitGroupCreation();
         gotoGroupPage();
     }
@@ -43,16 +43,16 @@ public class groupCreationTests {
         wd.findElement(By.name("submit")).click();
     }
 
-    private void fillGroupForm(GroupData1 groupData1) {
+    private void fillGroupForm(GroupData11 groupData11) {
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys(groupData1.getGroupData().getName());
+        wd.findElement(By.name("group_name")).sendKeys(groupData11.getName1());
         wd.findElement(By.name("group_header")).click();
         wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys(groupData1.getGroupData().getHeader());
+        wd.findElement(By.name("group_header")).sendKeys(groupData11.getHeader1());
         wd.findElement(By.name("group_footer")).click();
         wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys(groupData1.getGroupData().getFooter());
+        wd.findElement(By.name("group_footer")).sendKeys(groupData11.getFooter1());
     }
 
     private void initGroupCreation() {
