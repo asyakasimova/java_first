@@ -25,7 +25,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("firstname"), contactData.getUsername());
         type(By.name("lastname"), contactData.getFamilyName());
         type(By.name("home"), contactData.getPhoneNumber());
-        type(By.name("home"), contactData.getAddress());
+        type(By.name("address"), contactData.getAddress());
         type(By.name("email"), contactData.getEmail());
       // ERROR: Caught exception [Error: Dom locators are not implemented yet!]
     }

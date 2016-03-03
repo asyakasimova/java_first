@@ -10,9 +10,10 @@ public class ContactData {
     public ContactData(String username, String familyName, String phoneNumber, String address, String email) {
         this.username = username;
         this.familyName = familyName;
+        this.address = address;
         this.phoneNumber = phoneNumber;
         this.email = email;
-        this.address = address;
+
     }
 
     public String getUsername() {
