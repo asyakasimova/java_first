@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
     public void testContactModification() {
         app.getNavigationHelper().gotoHomePage();
         app.getContactHelper().openEditForm();
-        app.getContactHelper().fillingContactParameters(new ContactData("Asechka", "Kasimova", "test address", "+7 495 123 45 78",  "asya.kasimova@test.ru"));
+        app.getContactHelper().fillingContactParameters(new ContactData("Asechka", "Kasimova", null, "test address", "+7 495 123 45 78",  "asya.kasimova@test.ru"), false);
         app.getContactHelper().submitContactModifitation();
         app.getNavigationHelper().gotoHomePage();
     }
