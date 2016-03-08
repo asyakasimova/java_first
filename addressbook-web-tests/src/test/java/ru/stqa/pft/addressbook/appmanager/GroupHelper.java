@@ -2,7 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.stqa.pft.addressbook.model.GroupData11;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 /**
  * Created by Valkyrja on 03.03.2016.
@@ -17,10 +17,10 @@ public class GroupHelper extends HelperBase {
         click(By.name("submit"));
     }
 
-    public void fillGroupForm(GroupData11 groupData11) {
-        type(By.name("group_name"), groupData11.getName1());
-        type(By.name("group_header"), groupData11.getHeader1());
-        type(By.name("group_footer"), groupData11.getFooter1());
+    public void fillGroupForm(GroupData groupData11) {
+        type(By.name("group_name"), groupData11.getName());
+        type(By.name("group_header"), groupData11.getHeader());
+        type(By.name("group_footer"), groupData11.getFooter());
     }
 
     public void initGroupCreation() {
@@ -41,5 +41,21 @@ public class GroupHelper extends HelperBase {
 
     public void submitGroupModification() {
         click(By.name("update"));
+    }
+
+    public void createGroup(GroupData group) {
+
+        initGroupCreation();
+        fillGroupForm(group);
+        submitGroupCreation();
+        returnToGroupPage();
+    }
+
+    private void returnToGroupPage() {
+        click(By.linkText("groups"));
+    }
+
+    public boolean isThereAGroup() {
+        return isElementPresent(By.name("selected[]"));
     }
 }
