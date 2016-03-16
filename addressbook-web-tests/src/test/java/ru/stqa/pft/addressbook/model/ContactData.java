@@ -1,7 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private final String id;
+    private int id;
     private final String username;
     private final String familyName;
     private final String phoneNumber;
@@ -12,7 +12,7 @@ public class ContactData {
 
 
     public ContactData(String username, String familyName, String group, String address, String phoneNumber, String email) {
-        this.id = null;
+        this.id = 0;
         this.username = username;
         this.familyName = familyName;
         this.group = group;
@@ -22,7 +22,7 @@ public class ContactData {
 
     }
 
-    public ContactData(String id, String username, String familyName, String group, String address, String phoneNumber, String email) {
+    public ContactData(int id, String username, String familyName, String group, String address, String phoneNumber, String email) {
         this.id = id;
         this.username = username;
         this.familyName = familyName;
@@ -33,7 +33,7 @@ public class ContactData {
 
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -61,11 +61,20 @@ public class ContactData {
         return group;
     }
 
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
+
                 ", familyName='" + familyName + '\'' +
                 '}';
     }
@@ -77,7 +86,7 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (id != that.id) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
         return familyName != null ? familyName.equals(that.familyName) : that.familyName == null;
 
@@ -85,7 +94,7 @@ public class ContactData {
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
+        int result = id;
         result = 31 * result + (username != null ? username.hashCode() : 0);
         result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
         return result;
