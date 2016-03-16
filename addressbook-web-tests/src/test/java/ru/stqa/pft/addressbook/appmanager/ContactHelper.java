@@ -59,8 +59,11 @@ public class ContactHelper extends HelperBase {
     }
 
     public void openEditForm(int index) {
-
-        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        WebElement row = elements.get(index);
+        List<WebElement> cells = row.findElements(By.tagName("td"));
+        cells.get(7).click();
     }
 
     public void submitContactModifitation() {
@@ -86,7 +89,7 @@ public class ContactHelper extends HelperBase {
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements) {
+         for (WebElement element : elements) {
             String username = element.findElement(By.xpath("./td[2]")).getText();
             String familyName = element.findElement(By.xpath("./td[1]")).getText();
             ContactData contact = new ContactData("Asya", "KasKas", null, null, null, null);
