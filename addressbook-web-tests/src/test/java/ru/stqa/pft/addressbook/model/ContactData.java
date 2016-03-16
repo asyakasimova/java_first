@@ -12,7 +12,7 @@ public class ContactData {
 
 
     public ContactData(String username, String familyName, String group, String address, String phoneNumber, String email) {
-        this.id = 0;
+        this.id = Integer.MAX_VALUE;
         this.username = username;
         this.familyName = familyName;
         this.group = group;
@@ -86,7 +86,6 @@ public class ContactData {
 
         ContactData that = (ContactData) o;
 
-        if (id != that.id) return false;
         if (username != null ? !username.equals(that.username) : that.username != null) return false;
         return familyName != null ? familyName.equals(that.familyName) : that.familyName == null;
 
@@ -94,9 +93,9 @@ public class ContactData {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (username != null ? username.hashCode() : 0);
+        int result = username != null ? username.hashCode() : 0;
         result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
         return result;
     }
+
 }
