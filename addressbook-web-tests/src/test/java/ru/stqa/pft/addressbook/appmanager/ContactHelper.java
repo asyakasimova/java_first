@@ -2,9 +2,13 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Valkyrja on 03.03.2016.
@@ -42,8 +46,8 @@ public class ContactHelper extends HelperBase {
     public void contactCreationPage() {
       click(By.linkText("add new"));
     }
-    public void selectContact() {
-        click(By.name("selected[]"));
+    public void selectContact(int index) {
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void deleteSelectedContact() {
@@ -54,7 +58,8 @@ public class ContactHelper extends HelperBase {
         alertAccept();
     }
 
-    public void openEditForm() {
+    public void openEditForm(int index) {
+
         click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
     }
 
@@ -76,5 +81,17 @@ public class ContactHelper extends HelperBase {
 
     public int getContactCount() {
         return wd.findElements(By.name("entry")).size();
+    }
+
+    public List<ContactData> getContactList() {
+        List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.name("entry"));
+        for (WebElement element : elements) {
+            String username = element.findElement(By.xpath("./td[2]")).getText();
+            String familyName = element.findElement(By.xpath("./td[1]")).getText();
+            ContactData contact = new ContactData("Asya", "KasKas", null, null, null, null);
+            contacts.add(contact);
+        }
+        return contacts;
     }
 }

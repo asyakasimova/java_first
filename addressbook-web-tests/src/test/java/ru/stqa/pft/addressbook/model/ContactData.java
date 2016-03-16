@@ -41,4 +41,31 @@ public class ContactData {
     public String getGroup() {
         return group;
     }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "username='" + username + '\'' +
+                ", familyName='" + familyName + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (username != null ? !username.equals(that.username) : that.username != null) return false;
+        return familyName != null ? familyName.equals(that.familyName) : that.familyName == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = username != null ? username.hashCode() : 0;
+        result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
+        return result;
+    }
 }
