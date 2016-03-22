@@ -12,10 +12,10 @@ import java.util.List;
  */
 public class ContactModificationTests extends TestBase {
 
-    @Test
+    @Test(enabled = false)
 
     public void testContactModification() {
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         if (! app.getContactHelper().isThereAContact()){
             app.getContactHelper().createContact(new ContactData("Asya1", "Kasimova", "test1", "test address", "+7 495 111 11 11",  "asya.kasimova@something.ru"), true);
         }
@@ -25,7 +25,7 @@ public class ContactModificationTests extends TestBase {
         ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Asya22", "KasKas", null, "test address", "+7 495 123 45 78",  "asya.kasimova@test.ru");
         app.getContactHelper().fillingContactParameters(contact, false);
         app.getContactHelper().submitContactModifitation();
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size());
 

@@ -10,9 +10,9 @@ import java.util.List;
  * Created by Valkyrja on 03.03.2016.
  */
 public class ContactDeletionTests extends TestBase {
-    @Test
+    @Test(enabled = false)
     public void testContactDeletion() {
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
         if (! app.getContactHelper().isThereAContact()){
             app.getContactHelper().createContact(new ContactData("Asya1", "Kasimova", "test1", "test address", "+7 495 111 11 11",  "asya.kasimova@something.ru"), true);
         }
