@@ -12,6 +12,36 @@ public class ContactData {
     private String mobile;
     private String work;
     private String allPhones;
+    private String mail1;
+    private String mail2;
+    private String mail3;
+
+    public String getMail1() {
+        return mail1;
+    }
+
+    public ContactData withMail1(String mail1) {
+        this.mail1 = mail1;
+        return this;
+    }
+
+    public String getMail2() {
+        return mail2;
+    }
+
+    public ContactData withMail2(String mail2) {
+        this.mail2 = mail2;
+        return this;
+    }
+
+    public String getMail3() {
+        return mail3;
+    }
+
+    public ContactData withMail3(String mail3) {
+        this.mail3 = mail3;
+        return this;
+    }
 
     public String getAllPhones() {
         return allPhones;
