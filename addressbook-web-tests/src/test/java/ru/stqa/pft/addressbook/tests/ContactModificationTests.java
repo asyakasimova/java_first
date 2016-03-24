@@ -29,7 +29,7 @@ public class ContactModificationTests extends TestBase {
               ContactData contact = new ContactData()
                 .withId(modifiedContact.getId()). withUsername("Asya22").withFamilyName("KasKas").withGroup(null).withAddress("test address").withPhoneNumber("+7 495 123 45 78").withEmail("asya.kasimova@test.ru");
         app.contact().modify(contact);
-        assertThat(app.group().count(), equalTo(before.size()));
+        assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.contact().all();
         assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
     }
