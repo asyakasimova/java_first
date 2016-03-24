@@ -4,6 +4,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -25,9 +28,11 @@ public class ContactEmailTests extends TestBase {
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        assertThat(contact.getMail1(), equalTo(cleaned(contactInfoFromEditForm.getMail1())));
-        assertThat(contact.getMail2(), equalTo(cleaned(contactInfoFromEditForm.getMail2())));
-        assertThat(contact.getMail3(), equalTo(cleaned(contactInfoFromEditForm.getMail3())));
+        assertThat(contact.getEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
+    }
+
+    private String mergeEmails(ContactData contact) {
+        return Arrays.asList(contact.getMail1(), contact.getMail2(), contact.getMail3()).stream().filter((s) -> ! equals("")).collect(Collectors.joining("\n"));
     }
 
     public String cleaned(String mail) {

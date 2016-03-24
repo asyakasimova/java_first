@@ -24,10 +24,14 @@ public class ContactAddressTests extends TestBase {
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
 
-        MatcherAssert.assertThat(contact.getAddress(), CoreMatchers.equalTo(cleaned(contactInfoFromEditForm.getAddress())));
+        MatcherAssert.assertThat(clean(contact.getAddress()), CoreMatchers.equalTo(cleaned(contactInfoFromEditForm.getAddress())));
     }
 
     public String cleaned(String address) {
-        return address.replaceAll(" {2,}", " ");
+        return address.replaceAll("\\s+", " ");
+    }
+
+    public String clean(String address) {
+        return address.replaceAll("\\n", " ");
     }
 }

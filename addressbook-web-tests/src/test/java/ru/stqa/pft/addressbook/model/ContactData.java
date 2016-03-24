@@ -15,6 +15,16 @@ public class ContactData {
     private String mail1;
     private String mail2;
     private String mail3;
+    private String emails;
+
+    public String getEmails() {
+        return emails;
+    }
+
+    public ContactData withEmails(String emails) {
+        this.emails = emails;
+        return this;
+    }
 
     public String getMail1() {
         return mail1;
@@ -174,6 +184,4 @@ public class ContactData {
         result = 31 * result + (familyName != null ? familyName.hashCode() : 0);
         return result;
     }
-
-
 }
