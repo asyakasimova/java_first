@@ -11,14 +11,15 @@ public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreationTests() throws Exception {
-    List<ContactData> before = app.getContactHelper().getContactList();
-    ContactData contact = new ContactData("Asya1", "KasKas", "test1", "test address", "+7 495 111 11 11",  "asya.kasimova@something.ru");
-    app.getContactHelper().createContact(contact, true);
-    List<ContactData> after = app.getContactHelper().getContactList();
+    List<ContactData> before = app.contact().list();
+    ContactData contact = new ContactData()
+            .withUsername("Asya1").withFamilyName("KasKas").withGroup("test1").withAddress("test address").withPhoneNumber("+7 495 111 11 11").withEmail("asya.kasimova@something.ru");
+    app.contact().create(contact, true);
+    List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size() + 1);
 
 
-    contact.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
+    contact.withId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     before.add(contact);
       Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
       before.sort(byId);

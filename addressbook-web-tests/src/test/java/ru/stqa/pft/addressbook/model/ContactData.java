@@ -1,37 +1,14 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String username;
-    private final String familyName;
-    private final String phoneNumber;
-    private final String email;
+    private int id = Integer.MAX_VALUE;
+    private String username;
+    private String familyName;
+    private String phoneNumber;
+    private String email;
     private String group;
-    private final String address;
+    private String address;
 
-
-
-    public ContactData(String username, String familyName, String group, String address, String phoneNumber, String email) {
-        this.id = Integer.MAX_VALUE;
-        this.username = username;
-        this.familyName = familyName;
-        this.group = group;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-
-    }
-
-    public ContactData(int id, String username, String familyName, String group, String address, String phoneNumber, String email) {
-        this.id = id;
-        this.username = username;
-        this.familyName = familyName;
-        this.group = group;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
-
-    }
 
     public int getId() {
         return id;
@@ -61,12 +38,39 @@ public class ContactData {
         return group;
     }
 
-    public void setGroup(String group) {
+    public ContactData withGroup(String group) {
         this.group = group;
+        return this;
     }
 
-    public void setId(int id) {
+    public ContactData withId(int id) {
         this.id = id;
+        return this;
+    }
+
+    public ContactData withUsername(String username) {
+        this.username = username;
+        return this;
+    }
+
+    public ContactData withFamilyName(String familyName) {
+        this.familyName = familyName;
+        return this;
+    }
+
+    public ContactData withPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
     }
 
     @Override

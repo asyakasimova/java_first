@@ -15,20 +15,21 @@ public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensureContactPreconditions() {
-        app.goTo().gotoHomePage();
-        if (! app.getContactHelper().isThereAContact()){
-            app.getContactHelper().createContact(new ContactData("Asya1", "Kasimova", "test1", "test address", "+7 495 111 11 11",  "asya.kasimova@something.ru"), true);
+        app.goTo().homePage();
+        if (app.contact().list().size() == 0){
+            app.contact().create(new ContactData().withUsername("Asya1").withFamilyName("Kasimova"), true);
         }
     }
 
     @Test
     public void testContactModification() {
 
-        List<ContactData> before = app.getContactHelper().getContactList();
+        List<ContactData> before = app.contact().list();
         int index = before.size() - 1;
-        ContactData contact = new ContactData(before.get(index).getId(), "Asya22", "KasKas", null, "test address", "+7 495 123 45 78",  "asya.kasimova@test.ru");
-        app.getContactHelper().modifyContact(index, contact);
-        List<ContactData> after = app.getContactHelper().getContactList();
+        ContactData contact = new ContactData()
+                .withId(before.get(index).getId()). withUsername("Asya22").withFamilyName("KasKas").withGroup(null).withAddress("test address").withPhoneNumber("+7 495 123 45 78").withEmail("asya.kasimova@test.ru");
+        app.contact().modify(index, contact);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size());
 
         before.remove(index);
