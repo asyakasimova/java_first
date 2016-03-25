@@ -142,7 +142,6 @@ public class ContactData {
         return this;
     }
 
-
     public ContactData withMobilePhone(String mobile) {
         this.mobile = mobile;
         return this;
@@ -152,7 +151,6 @@ public class ContactData {
         this.work = work;
         return this;
     }
-
 
     @Override
     public String toString() {
