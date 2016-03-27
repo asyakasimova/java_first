@@ -1,0 +1,23 @@
+<list>
+  <contact>
+    <username>Asya 0</username>
+    <familyName>Kas 0</familyName>
+    <email>a.kas0@mail.ru</email>
+    <address>address 0</address>
+    <home>+7 495 111 11 10</home>
+  </contact>
+  <contact>
+    <username>Asya 1</username>
+    <familyName>Kas 1</familyName>
+    <email>a.kas1@mail.ru</email>
+    <address>address 1</address>
+    <home>+7 495 111 11 11</home>
+  </contact>
+  <contact>
+    <username>Asya 2</username>
+    <familyName>Kas 2</familyName>
+    <email>a.kas2@mail.ru</email>
+    <address>address 2</address>
+    <home>+7 495 111 11 12</home>
+  </contact>
+</list>

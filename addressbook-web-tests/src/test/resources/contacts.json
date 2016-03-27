@@ -1,0 +1,23 @@
+[
+  {
+    "username": "Asya 0",
+    "familyName": "Kas 0",
+    "email": "a.kas0@mail.ru",
+    "address": "address 0",
+    "home": "+7 495 111 11 10"
+  },
+  {
+    "username": "Asya 1",
+    "familyName": "Kas 1",
+    "email": "a.kas1@mail.ru",
+    "address": "address 1",
+    "home": "+7 495 111 11 11"
+  },
+  {
+    "username": "Asya 2",
+    "familyName": "Kas 2",
+    "email": "a.kas2@mail.ru",
+    "address": "address 2",
+    "home": "+7 495 111 11 12"
+  }
+]
