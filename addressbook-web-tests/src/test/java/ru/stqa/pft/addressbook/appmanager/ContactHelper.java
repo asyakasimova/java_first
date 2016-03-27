@@ -31,7 +31,9 @@ public class ContactHelper extends HelperBase {
     public void fillingContactParameters(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getUsername());
         type(By.name("lastname"), contactData.getFamilyName());
-        type(By.name("home"), contactData.getPhoneNumber());
+        type(By.name("home"), contactData.getPhones().getHome());
+        type(By.name("mobile"), contactData.getPhones().getMobile());
+        type(By.name("work"), contactData.getPhones().getWork());
         type(By.name("address"), contactData.getAddress());
         type(By.name("email"), contactData.getEmail());
         attach(By.name("photo"), replacePathToFileWithActualFile(contactData.getPhotoname()));

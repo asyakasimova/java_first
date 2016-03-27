@@ -4,23 +4,35 @@
     "familyName": "Kas 0",
     "email": "a.kas0@mail.ru",
     "address": "address 0",
-    "home": "+7 495 111 11 10",
-    "photoname": "photo0"
+    "photoname": "photo0",
+    "phones": {
+      "work": "+7 497 0",
+      "home": "+7 495 0",
+      "mobile": "+7 496 0"
+    }
   },
   {
     "username": "Asya 1",
     "familyName": "Kas 1",
     "email": "a.kas1@mail.ru",
     "address": "address 1",
-    "home": "+7 495 111 11 11",
-    "photoname": "photo1"
+    "photoname": "photo1",
+    "phones": {
+      "work": "+7 497 1",
+      "home": "+7 495 1",
+      "mobile": "+7 496 1"
+    }
   },
   {
     "username": "Asya 2",
     "familyName": "Kas 2",
     "email": "a.kas2@mail.ru",
     "address": "address 2",
-    "home": "+7 495 111 11 12",
-    "photoname": "photo2"
+    "photoname": "photo2",
+    "phones": {
+      "work": "+7 497 2",
+      "home": "+7 495 2",
+      "mobile": "+7 496 2"
+    }
   }
 ]

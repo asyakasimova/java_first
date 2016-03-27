@@ -39,6 +39,19 @@ public class ContactData {
     @Expose
     private String photoname;
 
+    public Phones getPhones() {
+        return phones;
+    }
+
+    public ContactData withPhones(Phones phones) {
+        this.phones = phones;
+        return this;
+    }
+
+    @Expose
+    Phones phones;
+
+
     public String getPhotoname() {
         return photoname;
     }

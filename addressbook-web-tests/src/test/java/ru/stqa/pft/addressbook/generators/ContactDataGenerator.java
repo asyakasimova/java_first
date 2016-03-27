@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Phones;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -75,7 +76,7 @@ public class ContactDataGenerator {
     private void saveAsCsv(List<ContactData> contacts, File file) throws IOException {
         Writer writer = new FileWriter(file);
         for (ContactData contact : contacts){
-            writer.write(String.format("%s;%s;%s;%s;%s\n", contact.getUsername(), contact.getFamilyName(), contact.getAddress(), contact.getHomePhone(), contact.getEmail(), contact.getPhotoname()));
+            writer.write(String.format("%s;%s;%s;%s;%s;%s;%s;%s\n", contact.getUsername(), contact.getFamilyName(), contact.getAddress(), contact.getHomePhone(), contact.getEmail(), contact.getPhotoname()));
         }
         writer.close();
     }
@@ -83,8 +84,10 @@ public class ContactDataGenerator {
     private  List<ContactData> generateContacts(int count) {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
+
             contacts.add(new ContactData().withUsername(String.format("Asya %s", i)).withFamilyName(String.format("Kas %s", i)).withAddress(String.format("address %s", i))
-                    .withHomePhone(String.format("+7 495 111 11 1%s", i)).withEmail(String.format("a.kas%s@mail.ru", i)).withPhotoname(String.format("photo%s", i)));
+                    .withPhones(new Phones().withHome(String.format("+7 495 %s", i)).withMobile(String.format("+7 496 %s", i)).withWork(String.format("+7 497 %s", i)))
+                    .withEmail(String.format("a.kas%s@mail.ru", i)).withPhotoname(String.format("photo%s", i)));
         }
         return contacts;
     }
