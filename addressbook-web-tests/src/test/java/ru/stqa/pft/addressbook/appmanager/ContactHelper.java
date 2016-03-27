@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -33,13 +34,18 @@ public class ContactHelper extends HelperBase {
         type(By.name("home"), contactData.getPhoneNumber());
         type(By.name("address"), contactData.getAddress());
         type(By.name("email"), contactData.getEmail());
-        attach(By.name("photo"), contactData.getPhoto());
+        attach(By.name("photo"), replacePathToFileWithActualFile(contactData.getPhotoname()));
  //       if (creation) {
  //           new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
  //       } else {
  //           Assert.assertFalse(isElementPresent(By.name("new_group")));
  //       }
       // ERROR: Caught exception [Error: Dom locators are not implemented yet!]
+    }
+
+    private File replacePathToFileWithActualFile(String photoname) {
+        File photo = new File("src/test/resources/" + photoname + ".jpg");
+        return photo;
     }
 
     public void contactCreationPage() {
