@@ -12,8 +12,7 @@ public class ContactData {
     private String username;
     @Expose
     private String familyName;
-    @Expose
-    private String phoneNumber;
+
     @Expose
     private String email;
     @Expose
@@ -118,10 +117,6 @@ public class ContactData {
         return familyName;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
     public String getHomePhone() {
         return home;
     }
@@ -163,11 +158,6 @@ public class ContactData {
 
     public ContactData withFamilyName(String familyName) {
         this.familyName = familyName;
-        return this;
-    }
-
-    public ContactData withPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
         return this;
     }
 
