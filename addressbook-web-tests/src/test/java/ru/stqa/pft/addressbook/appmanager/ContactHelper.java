@@ -50,6 +50,10 @@ public class ContactHelper extends HelperBase {
         return photo;
     }
 
+    public void openStartPage() {
+        click(By.xpath("/html/body/div/div[3]/ul/li[1]/a"));
+    }
+
     public void contactCreationPage() {
       click(By.linkText("add new"));
     }
@@ -84,7 +88,7 @@ public class ContactHelper extends HelperBase {
 
 
     public void submitContactModifitation() {
-        click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+        click(By.xpath("//div[@id='content']/form[1]/input[1]"));
     }
 
     public void create(ContactData contact, boolean b) {
